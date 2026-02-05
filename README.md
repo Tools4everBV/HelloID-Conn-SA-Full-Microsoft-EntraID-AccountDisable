@@ -54,7 +54,7 @@ The following user-defined variables are used by the connector.
 - Uses the Entra ID user `id` for correlation and updates, rather than `userPrincipalName`, to avoid issues with renames or alternate sign-in IDs.
 
 ### Updating `accountEnabled`
-- Enabling or disabling a user is performed via a PATCH to the user resource setting `accountEnabled` to `true`.
+- Enabling or disabling a user is performed via a PATCH to the user resource setting `accountEnabled` to `false`.
 
 ## Development resources
 
