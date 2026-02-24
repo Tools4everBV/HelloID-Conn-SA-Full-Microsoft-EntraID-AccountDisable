@@ -9,14 +9,11 @@ This is the first official release of HelloID-Conn-SA-Full-Microsoft-EntraID-Acc
 
 ### Added
 
-• PowerShell data source to search for active Entra ID users with wildcard support across DisplayName, Mail, UserPrincipalName, and other user attributes
-• Task to disable Entra ID user accounts using Microsoft Graph API with required Entra ID permissions
-• Support for searching users across the entire Entra ID tenant
-• Audit logging for all account disable operations
-• Delegated form with user search and selection functionality
-• All-in-one setup script for HelloID form deployment
-• PowerShell data sources for generating user search tables with various attribute combinations
-• Dynamic form configuration with search field validation and grid filtering support
+- PowerShell data source to search for active Entra ID users with wildcard support across DisplayName, Mail, UserPrincipalName
+- Task to disable Entra ID user accounts using the Microsoft Graph API (`PATCH /users/{id}` with `accountEnabled: false`)
+- Certificate-based authentication for secure API access
+- Audit logging for all account disable operations
+- All-in-one setup script for HelloID form deployment
 
 ### Changed
 
