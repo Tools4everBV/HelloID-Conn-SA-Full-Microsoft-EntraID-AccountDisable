@@ -196,26 +196,26 @@ try {
     }
     Write-Verbose "Created headers"
 
-    # Enable user
+    # Disable user
     # API docs: https://learn.microsoft.com/en-us/graph/api/user-update?view=graph-rest-1.0&tabs=http
-    $actionMessage = "enabling user [$($user.displayName)] with id [$($user.id)]"
-    $enableUserBody = @{ 
-        "accountEnabled" = $true
+    $actionMessage = "disabling user [$($user.displayName)] with id [$($user.id)]"
+    $disableUserBody = @{ 
+        "accountEnabled" = $false
     }
-    $enableUserSplatParams = @{
+    $disableUserSplatParams = @{
         Uri         = "https://graph.microsoft.com/v1.0/users/$($user.id)"
         Headers     = $headers
         Method      = "PATCH"
-        Body        = ($enableUserBody | ConvertTo-Json -Depth 10)
+        Body        = ($disableUserBody | ConvertTo-Json -Depth 10)
         Verbose     = $false
         ErrorAction = "Stop"
     }
-    $enableUserResponse = Invoke-RestMethod @enableUserSplatParams
+    $disableUserResponse = Invoke-RestMethod @disableUserSplatParams
     
     $Log = @{
-        Action            = "EnableAccount" # optional. ENUM (undefined = default) 
+        Action            = "DisableAccount" # optional. ENUM (undefined = default) 
         System            = "EntraID" # optional (free format text) 
-        Message           = "Enabled user [$($user.displayName)] with id [$($user.id)]" # required (free format text) 
+        Message           = "Disabled user [$($user.displayName)] with id [$($user.id)]" # required (free format text) 
         IsError           = $false # optional. Elastic reporting purposes only. (default = $false. $true = Executed action returned an error) 
         TargetDisplayName = $user.displayName # optional (free format text)
         TargetIdentifier  = $user.id # optional (free format text)
@@ -236,7 +236,7 @@ catch {
     }
 
     $Log = @{
-        Action            = "EnableAccount" # optional. ENUM (undefined = default) 
+        Action            = "DisableAccount" # optional. ENUM (undefined = default) 
         System            = "EntraID" # optional (free format text)
         Message           = $auditMessage # required (free format text) 
         IsError           = $true # optional. Elastic reporting purposes only. (default = $false. $true = Executed action returned an error) 
