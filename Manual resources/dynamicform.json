@@ -80,6 +80,19 @@
         "requiresTemplateOptions": true,
         "requiresKey": true,
         "requiresDataSource": true
+      },
+      {
+        "key": "blnRevokeSessions",
+        "templateOptions": {
+          "label": "Revoke signin sessions",
+          "useSwitch": true,
+          "checkboxLabel": "Revoke"
+        },
+        "type": "boolean",
+        "summaryVisibility": "Show",
+        "requiresTemplateOptions": true,
+        "requiresKey": true,
+        "requiresDataSource": false
       }
     ]
   }
