@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. The format
 is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.1.1] - 2026-03-03
+
+### Changed
+
+- Updated README with comprehensive information about the revoke sign-in sessions option
+- Added documentation for `User.RevokeSessions.All` API permission requirement in connection settings
+
 ## [1.1.0] - 2026-03-03
 
 ### Added

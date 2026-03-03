@@ -12,7 +12,7 @@ By using this delegated form, you can disable user accounts in Microsoft Entra I
 
 1. Search and select an Entra ID user (wildcard search by display name, UserPrincipalName, or mail)
 2. Disable the selected user account in Microsoft Entra ID
-3. Option to revoke siging sessions of the account.
+3. Option to revoke signin sessions of the account.
 
 ## Getting started
 ### Requirements
@@ -32,6 +32,7 @@ Once you have completed the Microsoft setup and followed their best practices, c
 - **API Permissions** (Application permissions):
   - `User.Read.All` - To search and read user information
   - `User.ReadWrite.All` - To disable user accounts
+  - `User.RevokeSessions.All` - To revoke user sign-in sessions (if using this feature)
 - **Certificate Base64 encoded string:**
   - Base64 encoded string of the certificate assigned to the app registration. For instructions on creating the certificate and obtaining the base64 string, refer to our forum post: [Setting up a certificate for Microsoft Graph API in HelloID connectors](https://forum.helloid.com/forum/helloid-provisioning/5338-instruction-setting-up-a-certificate-for-microsoft-graph-api-in-helloid-connectors#post5338)
 
@@ -60,6 +61,11 @@ The following global variables must be configured in HelloID when importing and 
 
 - The data source only returns users with `accountEnabled = true`, meaning search results show only active user accounts available for disabling.
 
+### Optional Session Revocation
+
+- The form includes an optional toggle to revoke sign-in sessions in Entra ID
+- When enabled, this forces the user to re-authenticate on all devices and applications
+
 ### Certificate-Based Authentication
 
 - The connector uses certificate-based authentication to generate JSON Web Tokens (JWT) for secure communication with Microsoft Graph API.
@@ -73,12 +79,14 @@ The following Microsoft Graph API endpoints are used by the connector:
 | Endpoint | Description |
 | --- | --- |
 | /v1.0/users | Search and retrieve enabled users |
-| /v1.0/users/{id} | Update a specific user |
+| /v1.0/users/{id} | Update a specific user (disable account) |
+| /v1.0/users/{id}/revokeSignInSessions | Revoke user sign-in sessions (optional) |
 
 ### API documentation
 
 - [List users](https://learn.microsoft.com/en-us/graph/api/user-list)
 - [Update user](https://learn.microsoft.com/en-us/graph/api/user-update)
+- [Revoke sign-in sessions](https://learn.microsoft.com/en-us/graph/api/user-revokesigninsessions)
 
 ## Getting help
 
