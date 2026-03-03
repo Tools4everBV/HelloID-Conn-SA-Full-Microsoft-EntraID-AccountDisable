@@ -22,7 +22,7 @@ EntraIdCertificatePassword
 '@ 
 $tmpValue = @'
 '@ 
-$globalHelloIDVariables.Add([PSCustomObject]@{name = $tmpName; value = $tmpValue; secret = "False"});
+$globalHelloIDVariables.Add([PSCustomObject]@{name = $tmpName; value = $tmpValue; secret = "True"});
 
 #Global variable #2 >> EntraIdCertificateBase64String
 $tmpName = @'
@@ -30,7 +30,7 @@ EntraIdCertificateBase64String
 '@ 
 $tmpValue = @'
 '@ 
-$globalHelloIDVariables.Add([PSCustomObject]@{name = $tmpName; value = $tmpValue; secret = "False"});
+$globalHelloIDVariables.Add([PSCustomObject]@{name = $tmpName; value = $tmpValue; secret = "True"});
 
 #Global variable #3 >> EntraIdTenantId
 $tmpName = @'
