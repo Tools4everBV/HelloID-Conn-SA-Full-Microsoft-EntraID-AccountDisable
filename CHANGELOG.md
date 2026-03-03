@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. The format
 is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] - 2026-03-03
+
+### Added
+
+- Optional revoke sign-in sessions functionality when disabling accounts
+- Switch/checkbox in dynamic form to control whether to revoke sign-in sessions
+- API integration with Microsoft Graph `/users/{id}/revokeSignInSessions` endpoint
+- Audit logging for sign-in session revocation operations
+
 ## [1.0.0] - 2026-02-24
 
 This is the first official release of HelloID-Conn-SA-Full-Microsoft-EntraID-AccountDisable. This release includes functionality to disable Entra ID user accounts through HelloID Service Automation delegated forms.
