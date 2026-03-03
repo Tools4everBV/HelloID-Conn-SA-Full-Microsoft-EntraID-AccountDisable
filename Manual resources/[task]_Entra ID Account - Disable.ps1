@@ -1,5 +1,6 @@
 # Variables configured in form
 $user = $form.gridUsers
+$blnRevokeSignInSessions = [System.Convert]::ToBoolean($form.blnRevokeSessions)
 
 # Global variables
 # Outcommented as these are set from Global Variables
@@ -221,6 +222,30 @@ try {
         TargetIdentifier  = $user.id # optional (free format text)
     }
     Write-Information -Tags "Audit" -MessageData $log
+
+    if ($blnRevokeSignInSessions -eq $true) {
+        # Revoke signin sessions
+        # API docs: https://learn.microsoft.com/en-us/graph/api/user-revokesigninsessions?view=graph-rest-1.0&tabs=http
+        $actionMessage = "revoking signin sessions of user [$($user.displayName)] with id [$($user.id)]"
+        $revokeUserSignInSplatParams = @{
+            Uri         = "https://graph.microsoft.com/v1.0/users/$($user.id)/revokeSignInSessions"
+            Headers     = $headers
+            Method      = "POST"
+            Verbose     = $false
+            ErrorAction = "Stop"
+        }
+        $revokeUserSignInResponse = Invoke-RestMethod @revokeUserSignInSplatParams
+        
+        $Log = @{
+            Action            = "DisableAccount" # optional. ENUM (undefined = default) 
+            System            = "EntraID" # optional (free format text) 
+            Message           = "Revoked signin sessions of user [$($user.displayName)] with id [$($user.id)" # required (free format text) 
+            IsError           = $false # optional. Elastic reporting purposes only. (default = $false. $true = Executed action returned an error) 
+            TargetDisplayName = $user.displayName # optional (free format text)
+            TargetIdentifier  = $user.id # optional (free format text)
+        }
+        Write-Information -Tags "Audit" -MessageData $log
+    }
 }
 catch {
     $ex = $PSItem
