@@ -12,6 +12,7 @@ By using this delegated form, you can disable user accounts in Microsoft Entra I
 
 1. Search and select an Entra ID user (wildcard search by display name, UserPrincipalName, or mail)
 2. Disable the selected user account in Microsoft Entra ID
+3. Option to revoke siging sessions of the account.
 
 ## Getting started
 ### Requirements
