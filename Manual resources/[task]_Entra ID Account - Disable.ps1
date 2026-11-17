@@ -1,6 +1,6 @@
 # Variables configured in form
 $user = $form.gridUsers
-$blnRevokeSignInSessions = [System.Convert]::ToBoolean($form.blnRevokeSessions)
+$blnRevokeSignInSessions = if ([string]::IsNullOrWhiteSpace($form.blnRevokeSessions)) { $false } else { [System.Convert]::ToBoolean($form.blnRevokeSessions) }
 
 # Global variables
 # Outcommented as these are set from Global Variables
